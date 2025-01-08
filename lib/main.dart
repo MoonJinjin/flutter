@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/screens/home_screen.dart';
+import 'package:toonflix/services/api_services.dart';
 
 void main() {
+  ApiServices().getTodaysToons();
   runApp(App());
 }
 
@@ -11,33 +13,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFE7626C),
-        textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            color: Color(0xFF232B55),
-          ),
-        ),
-        cardColor: const Color(0xFFF4EDDB),
-      ),
       home: const HomeScreen(),
-    );
-  }
-}
-
-class MyText extends StatelessWidget {
-  const MyText({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Title',
-      style: TextStyle(
-        fontSize: 30,
-        color: Theme.of(context).textTheme.titleLarge?.color,
-      ),
     );
   }
 }
