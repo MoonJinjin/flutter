@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_detail_model.dart';
 import 'package:toonflix/models/webtoon_episode_model.dart';
 import 'package:toonflix/services/api_services.dart';
+import 'package:toonflix/widgets/episode_widget.dart';
 import 'package:toonflix/widgets/webtoon_card.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -89,44 +90,9 @@ class _DetailScreenState extends State<DetailScreen> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         var episode = snapshot.data![index];
-                        return Container(
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 10,
-                                offset: const Offset(5, 5),
-                                color: Colors.black.withValues(alpha: 0.3),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.green[400],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 20,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    episode.title,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                                const Icon(
-                                  Icons.chevron_right_rounded,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ),
-                          ),
+                        return Episode(
+                          episode: episode,
+                          webtoonID: widget.id,
                         );
                       },
                       separatorBuilder: (context, index) => const SizedBox(
